@@ -8,8 +8,32 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "KKI";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("View Projects", Icons.folder),
-    ItemHomepage("Add Project", Icons.add_circle),
+    ItemHomepage("View Projects", Icons.folder, Color.fromRGBO(255, 55, 55, 1)),
+    ItemHomepage(
+      "View Experiences",
+      Icons.folder,
+      Color.fromRGBO(63, 237, 36, 1),
+    ),
+    ItemHomepage(
+      "View Achievements",
+      Icons.folder,
+      Color.fromRGBO(31, 65, 255, 1),
+    ),
+    ItemHomepage(
+      "Add Project",
+      Icons.add_circle,
+      Color.fromRGBO(255, 89, 23, 1),
+    ),
+    ItemHomepage(
+      "Add Achievements",
+      Icons.add_circle,
+      Color.fromRGBO(14, 225, 24, 1),
+    ),
+    ItemHomepage(
+      "Add Experience",
+      Icons.add_circle,
+      Color.fromRGBO(86, 74, 250, 1),
+    ),
     ItemHomepage("Logout", Icons.logout),
   ];
 
@@ -61,6 +85,7 @@ class MyHomePage extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     crossAxisCount: 3,
+                    childAspectRatio: 4,
                     shrinkWrap: true,
                     children: items.map((ItemHomepage item) {
                       return ItemCard(item);
@@ -93,7 +118,7 @@ class InfoCard extends StatelessWidget {
         child: Column(
           children: [
             Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 2.0),
             Text(content),
           ],
         ),
@@ -110,7 +135,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.secondary,
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
@@ -145,6 +170,7 @@ class ItemCard extends StatelessWidget {
 class ItemHomepage {
   final String name;
   final IconData icon;
+  final Color color;
 
-  ItemHomepage(this.name, this.icon);
+  ItemHomepage(this.name, this.icon, [this.color = Colors.grey]);
 }
