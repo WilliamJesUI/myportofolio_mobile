@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -46,9 +47,38 @@ class MyHomePage extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.red,
+                Colors.orange,
+                Colors.yellow,
+                Colors.green,
+                Colors.blue,
+                Colors.purple,
+              ],
+            ),
+          ),
+          foregroundDecoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.5),
+          ),
+        ),
       ),
-      body: Padding(
+      drawer: const LeftDrawer(),
+      body: Container(
         padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.redAccent,
+              const Color.fromARGB(255, 255, 221, 0),
+              const Color.fromARGB(255, 0, 179, 255),
+              const Color.fromARGB(255, 187, 0, 255),
+            ],
+            transform: GradientRotation(1),
+          ),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -147,6 +177,11 @@ class ItemCard extends StatelessWidget {
         },
         child: Container(
           padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(color: Colors.black.withAlpha(40), spreadRadius: -10),
+            ],
+          ),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
