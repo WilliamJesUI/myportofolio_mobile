@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/screens/experience_form.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
-
-// TODO: Import ProjectFormPage after creating it
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -38,7 +37,6 @@ class LeftDrawer extends StatelessWidget {
               ],
             ),
           ),
-          // TODO: Add the navigation entries
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
@@ -66,11 +64,14 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.add_circle_outline),
             title: const Text('Add Experience'),
-            // Navigate to the Add Project screen
+            // Navigate to the Add Experience screen
             onTap: () {
-              /*
-              TODO: Add a route to ExperienceFormPage after creating it.
-              */
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExperienceFormPage(),
+                ),
+              );
             },
           ),
           ListTile(
