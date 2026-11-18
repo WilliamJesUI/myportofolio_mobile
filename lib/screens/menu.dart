@@ -27,7 +27,7 @@ class MyHomePage extends StatelessWidget {
       Color.fromRGBO(255, 89, 23, 1),
     ),
     ItemHomepage(
-      "Add Achievements",
+      "Add Achievement",
       Icons.add_circle,
       Color.fromRGBO(14, 225, 24, 1),
     ),

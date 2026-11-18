@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myportofolio_mobile/screens/experience_form.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/screens/achievement_form.dart';
+import 'package:myportofolio_mobile/screens/experience_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -79,9 +80,12 @@ class LeftDrawer extends StatelessWidget {
             title: const Text('Add Achievement'),
             // Navigate to the Add Project screen
             onTap: () {
-              /*
-              TODO: Add a route to AchievementFormPage after creating it.
-              */
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AchievementFormPage(),
+                ),
+              );
             },
           ),
         ],
