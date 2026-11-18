@@ -27,14 +27,14 @@ class MyHomePage extends StatelessWidget {
       Color.fromRGBO(255, 89, 23, 1),
     ),
     ItemHomepage(
-      "Add Achievement",
-      Icons.add_circle,
-      Color.fromRGBO(14, 225, 24, 1),
-    ),
-    ItemHomepage(
       "Add Experience",
       Icons.add_circle,
-      Color.fromRGBO(86, 74, 250, 1),
+      Color.fromRGBO(7, 255, 90, 1),
+    ),
+    ItemHomepage(
+      "Add Achievement",
+      Icons.add_circle,
+      Color.fromRGBO(117, 68, 252, 1),
     ),
     ItemHomepage("Logout", Icons.logout),
   ];

@@ -50,6 +50,9 @@ class _AchievementFormPageState extends State<AchievementFormPage> {
                     if (value == null || value.trim().isEmpty) {
                       return "Enter achievement name.";
                     }
+                    if (value.length > 255) {
+                      return "Title must be at most 255 characters.";
+                    }
                     return null;
                   },
                 ),
@@ -73,7 +76,7 @@ class _AchievementFormPageState extends State<AchievementFormPage> {
                   },
                   validator: (String? value) {
                     if (value == null || value.trim().isEmpty) {
-                      return "Enter Achivement description.";
+                      return "Enter Achievement description.";
                     }
                     return null;
                   },
@@ -94,6 +97,17 @@ class _AchievementFormPageState extends State<AchievementFormPage> {
                     setState(() {
                       _thumbnail = value!;
                     });
+                  },
+                  validator: (String? value) {
+                    final text = value?.trim() ?? '';
+                    if (text.isEmpty) return null;
+                    final uri = Uri.tryParse(text);
+                    if (uri == null ||
+                        !(uri.scheme == 'http' || uri.scheme == 'https') ||
+                        uri.host.isEmpty) {
+                      return "Enter a valid URL starting with http:// or https://";
+                    }
+                    return null;
                   },
                 ),
               ),

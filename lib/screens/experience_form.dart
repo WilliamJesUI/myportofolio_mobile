@@ -59,6 +59,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     if (value == null || value.trim().isEmpty) {
                       return "Enter Experience title.";
                     }
+                    if (value.length > 255) {
+                      return "Title must be at most 255 characters.";
+                    }
                     return null;
                   },
                 ),

@@ -17,3 +17,6 @@ Hot restart loads code changes into the VM, and restarts the Flutter app, losing
 
 AI Disclosure:
 I used AI as a learning tool for me to explore about more concepts about flutter and dart that is not covered in the tutorial or slides. For the most part this assignment is mainly copy and pasting from the tutorial. So I was able to do the assignment without using AI. I have zero understanding on what I'm doing do since I am just blindly copy pasting. So I use the AI the explain what the code was doing.
+
+
+### Assignment 8

@@ -51,6 +51,9 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                     if (value == null || value.trim().isEmpty) {
                       return "Enter a project name.";
                     }
+                    if (value.length > 255) {
+                      return "Title must be at most 255 characters.";
+                    }
                     return null;
                   },
                 ),
@@ -96,6 +99,17 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                       _thumbnail = value!;
                     });
                   },
+                  validator: (String? value) {
+                    final text = value?.trim() ?? '';
+                    if (text.isEmpty) return null;
+                    final uri = Uri.tryParse(text);
+                    if (uri == null ||
+                        !(uri.scheme == 'http' || uri.scheme == 'https') ||
+                        uri.host.isEmpty) {
+                      return "Enter a valid URL starting with http:// or https://";
+                    }
+                    return null;
+                  },
                 ),
               ),
               // === Project Download Link ===
@@ -113,6 +127,17 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                     setState(() {
                       _projectLink = value!;
                     });
+                  },
+                  validator: (String? value) {
+                    final text = value?.trim() ?? '';
+                    if (text.isEmpty) return null;
+                    final uri = Uri.tryParse(text);
+                    if (uri == null ||
+                        !(uri.scheme == 'http' || uri.scheme == 'https') ||
+                        uri.host.isEmpty) {
+                      return "Enter a valid URL starting with http:// or https://";
+                    }
+                    return null;
                   },
                 ),
               ),
