@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/menu.dart';
+import 'package:myportofolio_mobile/project_form.dart';
 
 // TODO: Import ProjectFormPage after creating it
 
@@ -54,8 +55,31 @@ class LeftDrawer extends StatelessWidget {
             title: const Text('Add Project'),
             // Navigate to the Add Project screen
             onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProjectFormPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_circle_outline),
+            title: const Text('Add Experience'),
+            // Navigate to the Add Project screen
+            onTap: () {
               /*
-              TODO: Add a route to ProjectFormPage after creating it.
+              TODO: Add a route to ExperienceFormPage after creating it.
+              */
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_circle_outline),
+            title: const Text('Add Achievement'),
+            // Navigate to the Add Project screen
+            onTap: () {
+              /*
+              TODO: Add a route to AchievementFormPage after creating it.
               */
             },
           ),
