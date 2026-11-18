@@ -62,7 +62,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           foregroundDecoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withAlpha(127),
           ),
         ),
       ),

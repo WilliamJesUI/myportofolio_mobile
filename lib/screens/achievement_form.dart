@@ -20,8 +20,17 @@ class _AchievementFormPageState extends State<AchievementFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(child: Text('Add Achievement Form')),
-        backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color.fromARGB(255, 131, 82, 255),
+                const Color.fromARGB(255, 255, 59, 216),
+              ],
+            ),
+          ),
+        ),
       ),
       drawer: const LeftDrawer(),
       body: Form(

@@ -30,7 +30,17 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
       appBar: AppBar(
         title: const Center(child: Text('Add Experience Form')),
         backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color.fromARGB(255, 77, 158, 15),
+                const Color.fromARGB(255, 36, 164, 190),
+              ],
+            ),
+          ),
+        ),
       ),
       drawer: const LeftDrawer(),
       body: Form(
@@ -141,7 +151,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                                   children: [
                                     Text('Experience Title: $_experienceTitle'),
                                     Text('Description: $_description'),
-                                    Text('Experience: $_category'),
+                                    Text('Category: $_category'),
                                   ],
                                 ),
                               ),

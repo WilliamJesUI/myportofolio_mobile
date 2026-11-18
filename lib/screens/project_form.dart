@@ -23,6 +23,16 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
         title: const Center(child: Text('Add Project Form')),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color.fromARGB(255, 255, 62, 62),
+                const Color.fromARGB(255, 255, 213, 88),
+              ],
+            ),
+          ),
+        ),
       ),
       drawer: const LeftDrawer(),
       body: Form(
