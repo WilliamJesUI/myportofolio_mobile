@@ -3,6 +3,10 @@ import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 import 'package:myportofolio_mobile/screens/experience_form.dart';
 import 'package:myportofolio_mobile/screens/achievement_form.dart';
+import 'package:myportofolio_mobile/screens/achievement_list_screen.dart';
+import 'package:myportofolio_mobile/services/auth_state.dart';
+import 'package:myportofolio_mobile/services/auth_guard.dart'; // wherever ensureLoggedIn lives
+import 'package:provider/provider.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
@@ -15,24 +19,45 @@ class ItemCard extends StatelessWidget {
       color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context)
+        onTap: () async {
+          // Grab these before any await so we never use a stale context.
+          final navigator = Navigator.of(context);
+          final messenger = ScaffoldMessenger.of(context);
+
+          if (item.name == "Logout") {
+            try {
+              await context.read<AuthState>().logout();
+            } catch (_) {
+              // Local logout already happened in AuthState's finally block.
+            }
+            messenger
+              ..hideCurrentSnackBar()
+              ..showSnackBar(const SnackBar(content: Text('Logged out.')));
+            return;
+          }
+
+          messenger
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(content: Text("You pressed the ${item.name} button!")),
             );
 
-          // Navigate to the appropriate screen
+          if (item.name == "View Achievements") {
+            navigator.push(
+              MaterialPageRoute(
+                builder: (context) => const AchievementListScreen(),
+              ),
+            );
+          }
+
           if (item.name == "Add Project") {
-            Navigator.push(
-              context,
+            navigator.push(
               MaterialPageRoute(builder: (context) => const ProjectFormPage()),
             );
           }
 
           if (item.name == "Add Experience") {
-            Navigator.push(
-              context,
+            navigator.push(
               MaterialPageRoute(
                 builder: (context) => const ExperienceFormPage(),
               ),
@@ -40,8 +65,9 @@ class ItemCard extends StatelessWidget {
           }
 
           if (item.name == "Add Achievement") {
-            Navigator.push(
-              context,
+            final ok = await ensureLoggedIn(context);
+            if (!ok || !context.mounted) return;
+            navigator.push(
               MaterialPageRoute(
                 builder: (context) => const AchievementFormPage(),
               ),
